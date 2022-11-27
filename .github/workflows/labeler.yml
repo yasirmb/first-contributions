@@ -1,12 +1,8 @@
 name: Labeler
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
-      - main
-  workflow_dispatch:
+      - master
 jobs:
   labeling:
     runs-on: ubuntu-latest
