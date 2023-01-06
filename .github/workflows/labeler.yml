@@ -20,3 +20,10 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
+      - name: Label
+        id: label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
+        with:
+          labels: |
+            change-in-contributors-md-file
