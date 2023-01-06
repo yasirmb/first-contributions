@@ -20,6 +20,18 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          stat: json
+          filters: |
+            changed:
+              - '**'
+      - name: Log number of changes
+        run: |
+          echo ${{fromJson(steps.filter.outputs.stat).changed.additionCount}}
+          echo ${{fromJson(steps.filter.outputs.stat).changed.deletionCount}}
+
       - name: Remove Label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
