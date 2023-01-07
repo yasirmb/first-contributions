@@ -42,4 +42,4 @@ jobs:
       - name: Print 'additions'
         run: echo ${{fromJson(steps.filter.outputs.stat).changed.additionCount }}
       - name: Print 'deletions'
-        run: echo ${{fromJson(steps.filter.outputs.stat).changed.additionCount }}
+        run: echo ${{fromJson(steps.filter.outputs.stat).changed.deletionCount }}
