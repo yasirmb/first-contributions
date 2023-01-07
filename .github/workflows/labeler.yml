@@ -34,24 +34,7 @@ jobs:
       - name: Add Label
         id: file-label
         uses: actions-ecosystem/action-add-labels@v1
-        if: ${{fromJson(steps.filter.outputs.stat).changed.additionCount == 1 && fromJson(steps.filter.outputs.stat).changed.deletionCount == 0 && steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
+        if: ${{fromJson(steps.filter.outputs.stat).changed.additionCount == 1 && fromJson(steps.filter.outputs.stat).changed.deletionCount == 0 && steps.changed-files.outputs.all_changed_files == 'Contributors.md' || fromJson(steps.filter.outputs.stat).changed.additionCount == 2 && fromJson(steps.filter.outputs.stat).changed.deletionCount == 1 && steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
         with:
           labels: single-line-change-in-contributors-md-file
-      - name: Add Label
-        id: file-label-2
-        uses: actions-ecosystem/action-add-labels@v1
-        if: ${{fromJson(steps.filter.outputs.stat).changed.additionCount == 2 && fromJson(steps.filter.outputs.stat).changed.deletionCount == 1 && steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
-        with:
-          labels: dop-single-line-change-in-contributors-md-file
-      - name: Add Label
-        id: changes-label
-        uses: actions-ecosystem/action-add-labels@v1
-        if: ${{ fromJson(steps.filter.outputs.stat).changed.additionCount == 1 }}
-        with:
-          labels: single-line-change
-      - name: Print 'changed_files'
-        run: echo ${{steps.filter.outputs.changed_files }}
-      - name: Print 'additions'
-        run: echo ${{fromJson(steps.filter.outputs.stat).changed.additionCount }}
-      - name: Print 'deletions'
-        run: echo ${{fromJson(steps.filter.outputs.stat).changed.deletionCount }}
+
