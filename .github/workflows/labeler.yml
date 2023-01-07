@@ -27,11 +27,6 @@ jobs:
           filters: |
             changed:
               - '**'
-      - name: Log number of changes
-        run: |
-          echo ${{fromJson(steps.filter.outputs.stat).changed.additionCount}}
-          echo ${{fromJson(steps.filter.outputs.stat).changed.deletionCount}}
-
       - name: Remove Label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
@@ -42,3 +37,10 @@ jobs:
         if: ${{ steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
         with:
           labels: change-in-contributors-md-file
+          
+      - name: Add Label
+        id: changes
+        uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ fromJson(steps.filter.outputs.stat).changed.additionCount == 1 }}
+        with:
+          labels: single-addition
