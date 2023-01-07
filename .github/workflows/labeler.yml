@@ -30,17 +30,12 @@ jobs:
       - name: Remove Label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
-          labels: change-in-contributors-md-file
+          labels: single-line-change-in-contributors-md-file
       - name: Add Label
         id: label
         uses: actions-ecosystem/action-add-labels@v1
-        if: ${{ steps.changed-files.outputs.all_changed_files == 'Contributors.md' }}
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'Contributors.md' && ( (fromJson(steps.filter.outputs.stat).changed.additionCount == 1  fromJson(steps.filter.outputs.stat).changed.deletionCount == 0) || (fromJson(steps.filter.outputs.stat).changed.additionCount == 2  fromJson(steps.filter.outputs.stat).changed.deletionCount == 1) ) }}
         with:
-          labels: change-in-contributors-md-file
-          
-      - name: Add Label
-        id: changes
-        uses: actions-ecosystem/action-add-labels@v1
-        if: ${{fromJson(steps.filter.outputs.stat).changed.additionCount == 1}}
-        with:
-          labels: single-addition
+          labels: single-line-change-in-contributors-md-file
+      - name: Print 'changed_files'
+        run: echo ${{steps.filter.outputs.changed_files }}
