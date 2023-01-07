@@ -41,6 +41,6 @@ jobs:
       - name: Add Label
         id: changes
         uses: actions-ecosystem/action-add-labels@v1
-        if: ${{ fromJson(steps.filter.outputs.stat).changed.additionCount == 1 }}
+        if: ${{fromJson(steps.filter.outputs.stat).changed.additionCount == 1}}
         with:
           labels: single-addition
