@@ -12,7 +12,7 @@ jobs:
         uses: plm9606/automerge_actions@1.2.2
         with:
           # The label name to automatically merge. Default is "automerge".
-          label-name: single-line-change-in-contributors-md-file
+          label-name: "single-line-change-in-contributors-md-file"
           # The number of reviewers to automatically merge. Default is 1.
           reviewers-number: 0
           # The merge method ("merge", "squash", "rebase"). Default is "merge"
