@@ -14,6 +14,7 @@
 - [Gargi Sontakke](https://github.com/gargi-so)
 - [Anushree Singhal](https://github.com/anushreee666)
 - [Idzanaagi](https://github.com/Idzanaagi)
+- [Yasir mb](https://github.com/yasirmb)
 - [Andrei Fabian Pop](https://github.com/Andrei-Fabian-Pop)
 - [Frostbyte]
 - [Tommy]
